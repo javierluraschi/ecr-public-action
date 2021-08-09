@@ -15,6 +15,7 @@ CREATE_REPO=${INPUT_CREATE_REPO-false}
 
 echo $CREATE_REPO
 echo "check repo exist or not"
+echo $REGION
 REPO=$CREATE_REPO
 if [ $CREATE_REPO != false ]; then
         aws ecr-public describe-repositories --region ${REGION} --repository-names $REPO || aws ecr-public create-repository --repository-name $REPO
