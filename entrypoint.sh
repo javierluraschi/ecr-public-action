@@ -17,14 +17,14 @@ echo $CREATE_REPO
 echo "check repo exist or not"
 REPO=$CREATE_REPO
 if [ $CREATE_REPO != false ]; then
-        aws ecr-public describe-repositories --region us-east-1 --repository-names $REPO || aws ecr-public create-repository --repository-name $REPO
+        aws ecr-public describe-repositories --region ${REGION} --repository-names $REPO || aws ecr-public create-repository --repository-name $REPO
 fi
 
 echo "INPUT_TAGS=${INPUT_TAGS}"
 TAGS=$(echo $INPUT_TAGS | tr "\n" " ")
 echo "found TAGS=$TAGS"
 
-aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
+aws ecr-public get-login-password --region ${REGION} | docker login --username AWS --password-stdin public.ecr.aws
 
 echo "docker build -t tmp -f ${DOCKERFILE} ${CONTEXT}"
 
