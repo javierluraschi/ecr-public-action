@@ -9,7 +9,7 @@
 | dockerfile | the dockerfile | Dockerfile | no |
 | context | the context for docker build | . | no |
 | create_repo | create the public ecr repository if not exist | null | no |
-
+| region | the aws region to use | us-east-1 | no |
 
 
 # Sample
