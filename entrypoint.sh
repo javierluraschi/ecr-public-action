@@ -6,6 +6,9 @@ CONTEXT=${INPUT_CONTEXT-.}
 REGION=${INPUT_REGION-.}
 [ -z $REGION ] && REGION='us-east-1'
 
+REPOURL=${INPUT_REPOURL-.}
+[ -z $REPOURL ] && REPOURL='public.ecr.aws'
+
 DOCKERFILE=${INPUT_DOCKERFILE-Dockerfile}
 [ -z $DOCKERFILE ] && DOCKERFILE='Dockerfile'
 
@@ -16,6 +19,7 @@ CREATE_REPO=${INPUT_CREATE_REPO-false}
 echo $CREATE_REPO
 echo "check repo exist or not"
 echo $REGION
+echo $REPOURL
 REPO=$CREATE_REPO
 if [ $CREATE_REPO != false ]; then
         aws ecr-public describe-repositories --region ${REGION} --repository-names $REPO || aws ecr-public create-repository --repository-name $REPO
@@ -25,7 +29,7 @@ echo "INPUT_TAGS=${INPUT_TAGS}"
 TAGS=$(echo $INPUT_TAGS | tr "\n" " ")
 echo "found TAGS=$TAGS"
 
-aws ecr-public get-login-password --region ${REGION} | docker login --username AWS --password-stdin public.ecr.aws
+docker login -u AWS -p $(aws ecr get-login-password --region ${REGION}) ${REPOURL}
 
 echo "docker build -t tmp -f ${DOCKERFILE} ${CONTEXT}"
 
