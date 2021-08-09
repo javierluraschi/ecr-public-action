@@ -10,7 +10,7 @@
 | context | the context for docker build | . | no |
 | create_repo | create the public ecr repository if not exist | null | no |
 | region | the aws region to use | us-east-1 | no |
-
+| repourl | the aws repo to use | public.ecr.aws | no |
 
 # Sample
 
