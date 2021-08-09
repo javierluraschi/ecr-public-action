@@ -11,6 +11,9 @@ inputs:
   dockerfile:
     description: "The dockerfile. Default: Dockerfile"
     required: false
+  repourl:
+    description: "The aws repo url to configure private repos. Default: public.ecr.aws"
+    required: false
   create_repo:
     description: "Whether to create the repo if not exist. Default: null"
     required: false
