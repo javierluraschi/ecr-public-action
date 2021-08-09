@@ -14,6 +14,9 @@ inputs:
   create_repo:
     description: "Whether to create the repo if not exist. Default: null"
     required: false
+  region:
+    description: "The AWS region to use. Default: us-east-1"
+    required: false
 outputs:
   ouptut:
     description: "The command output"
