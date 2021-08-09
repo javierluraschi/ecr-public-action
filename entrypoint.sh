@@ -3,6 +3,9 @@
 CONTEXT=${INPUT_CONTEXT-.}
 [ -z $CONTEXT ] && CONTEXT='.'
 
+REGION=${INPUT_REGION-.}
+[ -z $REGION ] && REGION='us-east-1'
+
 DOCKERFILE=${INPUT_DOCKERFILE-Dockerfile}
 [ -z $DOCKERFILE ] && DOCKERFILE='Dockerfile'
 
