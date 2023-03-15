@@ -1,6 +1,7 @@
 FROM public.ecr.aws/amazonlinux/amazonlinux:latest
 
-RUN amazon-linux-extras install docker
+RUN yum update -y
+RUN yum -y install docker
 
 RUN yum install -y unzip
 
